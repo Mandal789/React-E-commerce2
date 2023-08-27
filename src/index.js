@@ -1,13 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import { AppProvider } from "./contextApi_store/ProductContext";
+import { FilterContextProvider } from "./FilterContext/Filter_Context";
+import { CartProvider } from "./CartContext/Cart_Context";
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <AppProvider>
+      <FilterContextProvider>
+        <CartProvider>
+      <BrowserRouter>
+        <App />
+        <ToastContainer />
+      </BrowserRouter>
+      </CartProvider>
+      </FilterContextProvider>
+    </AppProvider>
   </React.StrictMode>
 );
 
