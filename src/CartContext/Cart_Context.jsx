@@ -3,7 +3,7 @@ import reducer from "./Cart_Reducer";
 //import { toast } from "react-toastify";
 const CartContext = createContext();
 const getLocalCartData = () => {
-  let localCartData = localStorage.getItem("thapaCart");
+  let localCartData = localStorage.getItem("CartD");
   if (!localCartData) {
     return [];
   } else {
@@ -63,7 +63,7 @@ const CartProvider = ({ children }) => {
   //console.log(state.cart);
   useEffect(() => {
     dispatch({ type: "CART_ITEM_PRICE_TOTAL" });
-    localStorage.setItem("thapaCart", JSON.stringify(state.cart));
+    localStorage.setItem("CartD", JSON.stringify(state.cart));
   }, [state.cart]);
 
   return (

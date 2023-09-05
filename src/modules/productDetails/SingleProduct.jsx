@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { useProductContext } from "../../contextApi_store/ProductContext";
-import PageNavigation from "../../components/PageNavigation/PageNavigation";
 import FormatPrice from "../../Helpers/FormatPrice";
 import { MdSecurity } from "react-icons/md";
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";

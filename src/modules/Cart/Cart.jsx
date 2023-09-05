@@ -4,12 +4,37 @@ import FormatPrice from "../../Helpers/FormatPrice";
 import CartItem from "./CartItem";
 import { Button } from "../../components/Button";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 const Cart = () => {
+  const navigate=useNavigate();
+  const {isAuthenticated,loginWithRedirect}=useAuth0();
   const { cart, clearCart, total_price, shipping_fee } = useCartContext();
-
+  if (cart.length === 0) {
+    return (
+      <>
+        <div className="mytext  h-[73.5vh] mywidth flex flex-col justify-center items-center font-semibold text-4xl ">
+          <img
+            src="https://www.pngmart.com/files/7/Cart-PNG-Clipart.png"
+            alt="cartimg"
+            width={190}
+          />
+          Your Cart is Empty
+          <NavLink
+            to={"/products"}
+            className="px-7  py-1 ml-[1%] mt-5  bg-sky-300 text-lg text-purple-950 rounded hover:bg-violet-500 hover:text-white"
+            onClick={() => navigate("/products")}
+          >
+            FILL IT
+          </NavLink>
+        </div>
+      </>
+    );
+  }
   return (
     <Wrapper>
       <div className="container">
+        
         <div className="cart_heading grid grid-five-column">
           <p>Item</p>
           <p className="cart-hide">Price</p>
@@ -28,7 +53,7 @@ const Cart = () => {
         <hr />
         <div className="cart-two-button">
           <NavLink to="/products">
-            <Button> continue Shopping </Button>
+            <Button className="rounded"> continue Shopping </Button>
           </NavLink>
           <Button className="btn btn-clear" onClick={clearCart}>
             clear cart
@@ -37,7 +62,13 @@ const Cart = () => {
 
         {/* order total_amount */}
         <div className="order-total--amount">
+        <p style={{fontSize:'2rem',fontWeight:'normal', paddingRight:'5rem'}}>Order Summary</p>
           <div className="order-total--subdata">
+          <div>
+              <p>Total items:</p>
+              <p>{cart.length}</p>
+              
+            </div>
             <div>
               <p>subtotal:</p>
               <p>
@@ -57,15 +88,22 @@ const Cart = () => {
                 <FormatPrice price={shipping_fee + total_price} />
               </p>
             </div>
+          
           </div>
+          { isAuthenticated?(<NavLink className="mt-3 text-lg" to="/working">
+            <Button style={{padding:'0.3rem 8rem',borderRadius:'4px',textTransform:'capitalize',backgroundColor:'blueviolet',color:'white'}}> checkout </Button>
+          </NavLink>):(<div className="mt-3 text-lg ">
+            <Button onClick={() => loginWithRedirect()} style={{padding:'0.3rem 8rem',borderRadius:'4px',textTransform:'capitalize'}}> login </Button>
+          </div>)}
         </div>
+        
       </div>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.section`
-  padding: 9rem 0;
+  padding: 9rem 70px;
 
   .grid-four-column {
     grid-template-columns: repeat(4, 1fr);
@@ -187,8 +225,8 @@ const Wrapper = styled.section`
       border: 0.1rem solid #f0f0f0;
       display: flex;
       flex-direction: column;
-      gap: 1.8rem;
-      padding: 3.2rem;
+      gap: 1rem;
+      padding: 3rem;
     }
     div {
       display: flex;
@@ -207,6 +245,7 @@ const Wrapper = styled.section`
   }
 
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    padding: 9rem 0px;
     .grid-five-column {
       grid-template-columns: 1.5fr 1fr 0.5fr;
     }

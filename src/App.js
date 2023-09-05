@@ -40,6 +40,7 @@ function App() {
   return (
     <div>
       <Header />
+      
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Routes>

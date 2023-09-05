@@ -8,9 +8,17 @@ import { ToastContainer } from "react-toastify";
 import { AppProvider } from "./contextApi_store/ProductContext";
 import { FilterContextProvider } from "./FilterContext/Filter_Context";
 import { CartProvider } from "./CartContext/Cart_Context";
+import { Auth0Provider } from "@auth0/auth0-react";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
+    <Auth0Provider
+    domain="dev-cp6s4yrb0mit2x7e.jp.auth0.com"
+    clientId="g4H0BRR0K6eZCkKO8E58OxS96VeUesUd"
+    authorizationParams={{
+      redirect_uri: window.location.origin
+    }}
+  >
     <AppProvider>
       <FilterContextProvider>
         <CartProvider>
@@ -21,7 +29,8 @@ root.render(
       </CartProvider>
       </FilterContextProvider>
     </AppProvider>
-  </React.StrictMode>
+    </Auth0Provider>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -119,7 +119,7 @@ const Product = () => {
             );
           })}
           <button
-            className="px-4 py-1 ml-[45%] mt-3  bg-cyan-400  text-gray-800 rounded hover:bg-cyan-500"
+            className="px-4 py-1 ml-[45%] mb-10 md:mb-0  bg-cyan-400  text-gray-800 rounded hover:bg-cyan-500"
             onClick={() => navigate("/products")}
           >
             ALL PRODUCT

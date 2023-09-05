@@ -1,5 +1,4 @@
 import styled from "styled-components";
-//import { useFilterContext } from "../context/filter_context";
 import { useFilterContext } from "../FilterContext/Filter_Context";
 import { FaCheck } from "react-icons/fa";
 import FormatPrice from "../Helpers/FormatPrice";
@@ -13,28 +12,21 @@ const FilterSection = () => {
     clearFilters,
   } = useFilterContext();
 
-  // get the unique values of each property
   const getUniqueData = (data, attr) => {
     let newVal = data.map((curElem) => {
       return curElem[attr];
     });
 
     if (attr === "colors") {
-      // return (newVal = ["All", ...new Set([].concat(...newVal))]);
       newVal = newVal.flat();
     }
 
     return (newVal = ["all", ...new Set(newVal)]);
   };
 
-  // we need to have the individual data of each in an array format
   const categoryData = getUniqueData(all_products, "category");
   const companyData = getUniqueData(all_products, "company");
   const colorsData = getUniqueData(all_products, "colors");
-  // console.log(
-  //   "🚀 ~ file: FilterSection.js ~ line 23 ~ FilterSection ~ companyData",
-  //   colorsData
-  // );
 
   return (
     <Wrapper>

@@ -1,4 +1,3 @@
-import React from "react";
 
 const ProductReduser = (state, action) => {
   switch (action.type) {

@@ -106,6 +106,11 @@ const Wrapper = styled.section`
       }
     }
   }
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    figure img {
+      height: 21rem;
+    }
+  }
 `;
 
 export default GridView;

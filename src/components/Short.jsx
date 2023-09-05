@@ -39,6 +39,7 @@ const Sort = () => {
             Sort By
           </label>
           <select
+            style={{ borderRadius:'30px' }}
             name="sort"
             id="sort"
             className="sort-selection--style"
@@ -112,7 +113,7 @@ const Wrapper = styled.section`
   }
 
   .sort-selection .sort-selection--style {
-    padding: 0.5rem;
+    /*padding: 0.5rem;*/
     cursor: pointer;
 
     .sort-select--option {
@@ -121,6 +122,16 @@ const Wrapper = styled.section`
       height: 2rem;
       padding: 10px;
     }
+  }
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    hr {
+      display:none;
+    }
+    .sorting-list--grid{
+      gap: 7rem
+     
+    }
+    
   }
 `;
 

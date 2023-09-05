@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import FormatPrice from "../Helpers/FormatPrice";
 import { Button } from "./Button";
 
 const ListView = ({ products }) => {
@@ -8,7 +7,7 @@ const ListView = ({ products }) => {
     <Wrapper className="section">
       <div className="container grid">
         {products.map((curElem, index) => {
-          const { id, name, image, price, description } = curElem;
+          const { id, name, image, description } = curElem;
           return (
             <div
               key={index}
@@ -137,6 +136,11 @@ const Wrapper = styled.section`
 
     .btn-main .btn:hover {
       color: #fff;
+    }
+  }
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    figure img {
+      height: 12rem;
     }
   }
 `;
