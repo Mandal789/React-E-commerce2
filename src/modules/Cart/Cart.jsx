@@ -99,7 +99,7 @@ const Cart = () => {
             <NavLink className="mt-3 text-lg" to="/working">
               <Button
                 style={{
-                  padding: "0.3rem 7.5rem",
+                  padding: "0.3rem 7.2rem",
                   borderRadius: "4px",
                   textTransform: "capitalize",
                   backgroundColor: "blueviolet",
