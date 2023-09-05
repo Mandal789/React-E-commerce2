@@ -7,8 +7,8 @@ import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 const Cart = () => {
-  const navigate=useNavigate();
-  const {isAuthenticated,loginWithRedirect}=useAuth0();
+  const navigate = useNavigate();
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
   const { cart, clearCart, total_price, shipping_fee } = useCartContext();
   if (cart.length === 0) {
     return (
@@ -34,7 +34,6 @@ const Cart = () => {
   return (
     <Wrapper>
       <div className="container">
-        
         <div className="cart_heading grid grid-five-column">
           <p>Item</p>
           <p className="cart-hide">Price</p>
@@ -62,12 +61,19 @@ const Cart = () => {
 
         {/* order total_amount */}
         <div className="order-total--amount">
-        <p style={{fontSize:'2rem',fontWeight:'normal', paddingRight:'5rem'}}>Order Summary</p>
+          <p
+            style={{
+              fontSize: "2rem",
+              fontWeight: "normal",
+              paddingRight: "5rem",
+            }}
+          >
+            Order Summary
+          </p>
           <div className="order-total--subdata">
-          <div>
+            <div>
               <p>Total items:</p>
               <p>{cart.length}</p>
-              
             </div>
             <div>
               <p>subtotal:</p>
@@ -88,15 +94,38 @@ const Cart = () => {
                 <FormatPrice price={shipping_fee + total_price} />
               </p>
             </div>
-          
           </div>
-          { isAuthenticated?(<NavLink className="mt-3 text-lg" to="/working">
-            <Button style={{padding:'0.3rem 8rem',borderRadius:'4px',textTransform:'capitalize',backgroundColor:'blueviolet',color:'white'}}> checkout </Button>
-          </NavLink>):(<div className="mt-3 text-lg ">
-            <Button onClick={() => loginWithRedirect()} style={{padding:'0.3rem 8rem',borderRadius:'4px',textTransform:'capitalize'}}> login </Button>
-          </div>)}
+          {isAuthenticated ? (
+            <NavLink className="mt-3 text-lg" to="/working">
+              <Button
+                style={{
+                  padding: "0.3rem 8rem",
+                  borderRadius: "4px",
+                  textTransform: "capitalize",
+                  backgroundColor: "blueviolet",
+                  color: "white",
+                }}
+              >
+                {" "}
+                checkout{" "}
+              </Button>
+            </NavLink>
+          ) : (
+            <div className="mt-3 text-lg ">
+              <Button
+                onClick={() => loginWithRedirect()}
+                style={{
+                  padding: "0.3rem 8rem",
+                  borderRadius: "4px",
+                  textTransform: "capitalize",
+                }}
+              >
+                {" "}
+                login{" "}
+              </Button>
+            </div>
+          )}
         </div>
-        
       </div>
     </Wrapper>
   );
