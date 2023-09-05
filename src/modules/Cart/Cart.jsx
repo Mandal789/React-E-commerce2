@@ -9,7 +9,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 const Cart = () => {
   const navigate = useNavigate();
   const { isAuthenticated, loginWithRedirect } = useAuth0();
-  const { cart, clearCart, total_price, shipping_fee } = useCartContext();
+  const { cart, clearCart, total_price, shipping_fee, total_item } = useCartContext();
   if (cart.length === 0) {
     return (
       <>
@@ -73,7 +73,7 @@ const Cart = () => {
           <div className="order-total--subdata">
             <div>
               <p>Total items:</p>
-              <p>{cart.length}</p>
+              <p>{total_item}</p>
             </div>
             <div>
               <p>subtotal:</p>
