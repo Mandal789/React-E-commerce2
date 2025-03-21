@@ -39,12 +39,12 @@ export const FilterContextProvider = ({ children }) => {
     dispatch({ type: "GET_SORT_VALUE", payload: userValue });
   };
 
-  const updateFilterValue = (event) => {
-    let name = event.target.name;
-    let value = event.target.value;
+    const updateFilterValue = (event) => {
+      let name = event.target.name;
+      let value = event.target.value;
 
-    return dispatch({ type: "UPDATE_FILTERS_VALUE", payload: { name, value } });
-  };
+      return dispatch({ type: "UPDATE_FILTERS_VALUE", payload: { name, value } });
+    };
   const clearFilters = () => {
     dispatch({ type: "CLEAR_FILTERS" });
   };
